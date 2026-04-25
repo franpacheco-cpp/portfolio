@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Nohemi';
-  src: url('./assets/fuentes/Nohemi-VF-BF6438cc58ad63d.ttf') format('truetype');
+  src: url('/assets/fuentes/Nohemi-VF-BF6438cc58ad63d.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }

@@ -7,20 +7,8 @@
   padding: 8vh 4vw;
 }
 
-main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 3rem 0;
-}
-
 @media (max-width: 768px) {
   :host {
     padding: 4vh 6vw;
-  }
-
-  main {
-    justify-content: flex-start;
   }
 }
