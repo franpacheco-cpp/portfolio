@@ -11,17 +11,23 @@
   align-items: center;
   border-top: 1px solid #000;
   padding-top: 1px;
+  font-family: 'Courier New', monospace;
+  opacity: 0.7;
+  letter-spacing: -0.5px;
 }
 
-.footer-copy p {
+.footer-copy {
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   text-align: left;
 }
 
 .footer-links {
   display: flex;
   gap: 30px;
+  font-family: 'Courier New', monospace;
+  opacity: 0.7;
+  letter-spacing: -0.5px;
 }
 
 .footer-links a {
