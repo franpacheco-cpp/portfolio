@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { Sobremi } from './components/sobremi/sobremi';
-import { Educacion } from './components/educacion/educacion';
-import { Proyectos } from './components/proyectos/proyectos';
+import { Sobremi } from './componentes/dinamicos/sobremi/sobremi';
+import { Educacion } from './componentes/dinamicos/educacion/educacion';
+import { Proyectos } from './componentes/dinamicos/proyectos/proyectos';
 
 export const routes: Routes = [
   { path: 'sobremi', component: Sobremi },
