@@ -3,7 +3,7 @@
     {
       "id": "1",
       "nombre": "FungiPlus",
-      "descripcion": "",
+      "descripcion": "Muestra de catálogo con JavaScript de una despensa de productos fungicos con CRUD simple almacenado localmente.",
       "img": "/recursos/fotos/fungiplus.png",
       "tecnologias": [
         { "id": "1", "nombre": "HTML" },
@@ -14,7 +14,7 @@
     {
       "id": "2",
       "nombre": "Pikmin Weather",
-      "descripcion": "",
+      "descripcion": "Página web del clima con acceso a Restful APIs para mostrar distintos GIFs de Pikmin dependiendo del fenómeno meteorológico.",
       "img": "/recursos/fotos/pikminweather.png",
       "tecnologias": [
         { "id": "1", "nombre": "HTML" },
@@ -26,7 +26,7 @@
     {
       "id": "3",
       "nombre": "Dungeon Quest",
-      "descripcion": "",
+      "descripcion": "RPG infinito simple hecho en Python incorporando funciones de guardado local.",
       "img": "/recursos/fotos/dungeonquest.png",
       "tecnologias": [{ "id": "1", "nombre": "Python" }]
     }
