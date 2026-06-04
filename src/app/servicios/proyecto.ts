@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class Proyecto {
-  urlApi: string = 'http://localhost:3000/proyectos';
+  private urlApi: string = 'http://localhost:3000/proyectos';
   constructor(private http: HttpClient) {}
   obtenerProyectos(): Observable<any> {
     return this.http.get(this.urlApi);

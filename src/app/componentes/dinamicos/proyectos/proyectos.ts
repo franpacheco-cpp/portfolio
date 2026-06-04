@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Proyecto } from '../../../servicios/proyecto';
 
 @Component({
   selector: 'app-proyectos',
@@ -7,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrl: './proyectos.css',
 })
 export class Proyectos {
-  constructor(private proyecto: Proyectos) {}
+  constructor(private proyecto: Proyecto) {
+    this.proyecto.obtenerProyectos().subscribe({
+      next: (data) => console.log(data),
+      error: (error) => console.log(error),
+      complete: () => console.info('completado'),
+    });
+  }
 }
