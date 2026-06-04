@@ -1,0 +1,34 @@
+{
+  "proyectos": [
+    {
+      "id": "1",
+      "nombre": "FungiPlus",
+      "descripcion": "",
+      "img": "/recursos/fotos/fungiplus.png",
+      "tecnologias": [
+        { "id": "1", "nombre": "HTML" },
+        { "id": "2", "nombre": "JS" },
+        { "id": "3", "nombre": "CSS" }
+      ]
+    },
+    {
+      "id": "2",
+      "nombre": "Pikmin Weather",
+      "descripcion": "",
+      "img": "/recursos/fotos/pikminweather.png",
+      "tecnologias": [
+        { "id": "1", "nombre": "HTML" },
+        { "id": "2", "nombre": "JS" },
+        { "id": "3", "nombre": "CSS" },
+        { "id": "4", "nombre": "APIs" }
+      ]
+    },
+    {
+      "id": "3",
+      "nombre": "Dungeon Quest",
+      "descripcion": "",
+      "img": "/recursos/fotos/dungeonquest.png",
+      "tecnologias": [{ "id": "1", "nombre": "Python" }]
+    }
+  ]
+}
