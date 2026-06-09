@@ -3,12 +3,14 @@
     {
       "id": "1",
       "nombre": "FungiPlus",
-      "descripcion": "Muestra de catálogo con JavaScript de una despensa de productos fungicos con CRUD simple almacenado localmente.",
+      "descripcion": "Muestra de catálogo con JavaScript de una despensa de productos fúngicos con CRUD simple almacenado localmente.",
       "img": "/recursos/fotos/fungiplus.png",
+      "url": "https://franpacheco-cpp.github.io/5_ETP_2024/Web/catalogo/index.html",
       "tecnologias": [
         { "id": "1", "nombre": "HTML" },
-        { "id": "2", "nombre": "JS" },
-        { "id": "3", "nombre": "CSS" }
+        { "id": "2", "nombre": "CSS" },
+        { "id": "3", "nombre": "JavaScript" },
+        { "id": "4", "nombre": "LocalStorage" }
       ]
     },
     {
@@ -16,10 +18,11 @@
       "nombre": "Pikmin Weather",
       "descripcion": "Página web del clima con acceso a Restful APIs para mostrar distintos GIFs de Pikmin dependiendo del fenómeno meteorológico.",
       "img": "/recursos/fotos/pikminweather.png",
+      "url": "https://franpacheco-cpp.github.io/5_ETP_2024/Web/pikminWeather/index.html",
       "tecnologias": [
         { "id": "1", "nombre": "HTML" },
-        { "id": "2", "nombre": "JS" },
-        { "id": "3", "nombre": "CSS" },
+        { "id": "2", "nombre": "CSS" },
+        { "id": "3", "nombre": "JavaScript" },
         { "id": "4", "nombre": "APIs" }
       ]
     },
@@ -28,7 +31,11 @@
       "nombre": "Dungeon Quest",
       "descripcion": "RPG infinito simple hecho en Python incorporando funciones de guardado local.",
       "img": "/recursos/fotos/dungeonquest.png",
-      "tecnologias": [{ "id": "1", "nombre": "Python" }]
+      "url": "https://github.com/franpacheco-cpp/6_ETP_2024/blob/main/Desarrollo/FranPacheco_DesafioRPG.py",
+      "tecnologias": [
+        { "id": "1", "nombre": "Python 3" },
+        { "id": "2", "nombre": "JSON" }
+      ]
     }
   ]
 }

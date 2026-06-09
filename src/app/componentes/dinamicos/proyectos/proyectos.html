@@ -1,39 +1,26 @@
 <section class="carrusel">
-  <article>
-    <h3>Catálogo Comercial</h3>
-    <a href="https://franpacheco-cpp.github.io/5_ETP_2024/Web/catalogo/index.html" target="_blank"
-      ><img src="recursos/fotos/fungiplus.png" alt="Catálogo de Hongos"
-    /></a>
-    <h4>Proyecto Escolar Individual</h4>
-    <h5>HTML - CSS - JavaScript - LocalStorage</h5>
-    <p>
-      Muestra de catálogo con JavaScript de una despensa de productos fungicos con CRUD simple
-      almacenado localmente.
-    </p>
-  </article>
-  <article>
-    <h3>Pikmin Weather</h3>
-    <a
-      href="https://franpacheco-cpp.github.io/5_ETP_2024/Web/pikminWeather/index.html"
-      target="_blank"
-      ><img src="recursos/fotos/pikminweather.png" alt="Landing page de Pikmin Weather"
-    /></a>
-    <h4>Proyecto Escolar Individual</h4>
-    <h5>HTML - CSS - JavaScript - APIs</h5>
-    <p>
-      Página web del clima con acceso a Restful APIs para mostrar distintos GIFs de Pikmin
-      dependiendo del fenómeno meteorológico.
-    </p>
-  </article>
-  <article>
-    <h3>Dungeon Quest</h3>
-    <a
-      href="https://github.com/franpacheco-cpp/6_ETP_2024/blob/main/Desarrollo/FranPacheco_DesafioRPG.py"
-      target="_blank"
-      ><img src="recursos/fotos/dungeonquest.png" alt="Inicio de Dungeon Quest"
-    /></a>
-    <h4>Proyecto Escolar Individual</h4>
-    <h5>Python 3 - Archivos JSON</h5>
-    <p>RPG infinito simple hecho en Python incorporando funciones de guardado local.</p>
-  </article>
+  @if (cargando()) {
+    <p>Cargando proyectos...</p>
+  } @else if (error()) {
+    <p class="error">{{ error() }}</p>
+  } @else {
+    @for (proyecto of proyectos(); track proyecto.id) {
+      <article>
+        <h3>{{ proyecto.nombre }}</h3>
+        @if (proyecto.url) {
+          <a [href]="proyecto.url" target="_blank">
+            <img [src]="proyecto.img" [alt]="'Imagen de ' + proyecto.nombre" />
+          </a>
+        } @else {
+          <img [src]="proyecto.img" [alt]="'Imagen de ' + proyecto.nombre" />
+        }
+        <h5>
+          @for (tec of proyecto.tecnologias; track tec.id) {
+            <span>{{ tec.nombre + ' ' }}</span>
+          }
+        </h5>
+        <p>{{ proyecto.descripcion }}</p>
+      </article>
+    }
+  }
 </section>
