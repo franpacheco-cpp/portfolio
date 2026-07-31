@@ -14,6 +14,7 @@ export const routes: Routes = [
     path: 'sesion',
     component: Sesion,
     children: [
+      { path: '', redirectTo: 'iniciosesion', pathMatch: 'full' },
       { path: 'iniciosesion', component: Iniciosesion },
       { path: 'registro', component: Registro },
     ],

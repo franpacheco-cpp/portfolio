@@ -23,7 +23,6 @@ article {
   flex-direction: column;
 
   background-color: #fff;
-  border-radius: 20px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 20px;
   scroll-snap-align: center;
@@ -54,7 +53,6 @@ article:hover {
 img {
   width: 80%;
   height: auto;
-  border-radius: 20px;
   display: block;
   margin: 10px auto;
 }
