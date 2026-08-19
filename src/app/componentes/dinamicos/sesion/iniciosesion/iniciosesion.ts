@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-iniciosesion',
-  imports: [ReactiveFormsModule], // <-- Imprescindible para el formulario reactivo
+  imports: [ReactiveFormsModule],
   templateUrl: './iniciosesion.html',
   styleUrl: './iniciosesion.css',
 })
@@ -11,8 +11,8 @@ export class Iniciosesion {
   private formBuilder = inject(FormBuilder);
 
   inicioSesionForm = this.formBuilder.group({
-    email: [''],
-    contrasenia: [''],
+    email: ['', [Validators.required, Validators.email]],
+    contrasenia: ['', [Validators.required, Validators.min(6)]],
   });
 
   onSubmit(): void {

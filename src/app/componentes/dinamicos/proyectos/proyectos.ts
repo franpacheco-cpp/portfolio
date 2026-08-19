@@ -1,10 +1,11 @@
 import { Component, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProyectoServicio, ProyectoItem } from '../../../servicios/proyecto';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-proyectos',
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './proyectos.html',
   styleUrl: './proyectos.css',
 })

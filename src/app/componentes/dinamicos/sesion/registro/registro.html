@@ -1,14 +1,23 @@
 <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
   <div class="input-group">
     <input type="email" placeholder="Correo electrónico" formControlName="email" />
+    @if (Email?.invalid && Email?.touched) {
+      <div class="validacion">El e-mail es requerido</div>
+    }
   </div>
 
   <div class="input-group">
     <input type="password" placeholder="Contraseña" formControlName="contrasenia" />
+    @if (Contrasenia?.invalid && Contrasenia?.touched) {
+      <div class="validacion">La contraseña es requerida</div>
+    }
   </div>
 
   <div class="input-group">
     <input type="password" placeholder="Repetir contraseña" formControlName="contrasenia2" />
+    @if (Contrasenia2?.invalid && Contrasenia2?.touched && Contrasenia2 != Contrasenia) {
+      <div class="validacion">Las contraseñas no coinciden</div>
+    }
   </div>
 
   <button type="submit">Registrarse</button>
