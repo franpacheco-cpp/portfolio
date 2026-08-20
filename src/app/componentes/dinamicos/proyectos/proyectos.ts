@@ -1,11 +1,12 @@
 import { Component, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProyectoServicio, ProyectoItem } from '../../../servicios/proyecto';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ProyectoService, ProyectoItem } from '../../../servicios/proyecto';
+import { AuthService } from '../../../servicios/autenticacion';
+import { ProyectosForm } from './proyectosform/proyectosform';
 
 @Component({
   selector: 'app-proyectos',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ProyectosForm],
   templateUrl: './proyectos.html',
   styleUrl: './proyectos.css',
 })
@@ -14,20 +15,32 @@ export class Proyectos implements OnInit {
   cargando = signal<boolean>(true);
   error = signal<string | null>(null);
 
-  constructor(private proyectoServicio: ProyectoServicio) {}
+  constructor(
+    private proyectoService: ProyectoService,
+    public autenticacionService: AuthService,
+  ) {}
 
   ngOnInit(): void {
-    this.proyectoServicio.obtenerProyectos().subscribe({
+    this.cargarProyectos();
+  }
+
+  cargarProyectos(): void {
+    this.cargando.set(true);
+    this.proyectoService.obtenerProyectos().subscribe({
       next: (data) => {
         this.proyectos.set(data);
         this.cargando.set(false);
       },
-      error: (err) => {
+      error: () => {
         this.error.set('No se pudieron cargar los proyectos.');
         this.cargando.set(false);
-        console.error(err);
       },
-      complete: () => console.info('Proyectos cargados.'),
+    });
+  }
+
+  eliminar(id: string): void {
+    this.proyectoService.eliminarProyecto(id).subscribe(() => {
+      this.cargarProyectos();
     });
   }
 }

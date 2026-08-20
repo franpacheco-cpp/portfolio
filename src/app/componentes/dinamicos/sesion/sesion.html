@@ -1,8 +1,21 @@
 <section class="sesion-container">
-  <nav class="sesion-tabs">
-    <a routerLink="iniciosesion" routerLinkActive="active">Iniciar Sesión</a>
-    <a routerLink="registro" routerLinkActive="active">Registrar Cuenta</a>
-  </nav>
+  @if (authService.estaAutenticado()) {
+    <div class="panel-usuario-activo">
+      <h2>¡Bienvenido!</h2>
+      <p>
+        Usuario conectado: <strong>{{ authService.usuarioActual()?.email }}</strong>
+      </p>
+      <p>
+        Rol: <strong>{{ authService.usuarioActual()?.rol }}</strong>
+      </p>
+      <button (click)="cerrarSesion()">Cerrar Sesión</button>
+    </div>
+  } @else {
+    <nav class="sesion-tabs">
+      <a routerLink="iniciosesion" routerLinkActive="active">Iniciar Sesión</a>
+      <a routerLink="registro" routerLinkActive="active">Registrar Cuenta</a>
+    </nav>
 
-  <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
+  }
 </section>

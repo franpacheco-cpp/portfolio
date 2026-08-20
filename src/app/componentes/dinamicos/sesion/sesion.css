@@ -9,7 +9,7 @@
 }
 
 .sesion-container:hover {
-  transform: translateY(-2px);
+  transform: scale(1.02);
 }
 
 .sesion-tabs {

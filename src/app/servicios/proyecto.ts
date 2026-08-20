@@ -19,12 +19,20 @@ export interface ProyectoItem {
 @Injectable({
   providedIn: 'root',
 })
-export class ProyectoServicio {
-  private urlApi: string = 'http://localhost:3000/proyectos';
+export class ProyectoService {
+  private apiUrl = 'http://localhost:3000/proyectos';
 
   constructor(private http: HttpClient) {}
 
   obtenerProyectos(): Observable<ProyectoItem[]> {
-    return this.http.get<ProyectoItem[]>(this.urlApi);
+    return this.http.get<ProyectoItem[]>(this.apiUrl);
+  }
+
+  crearProyecto(proyecto: ProyectoItem): Observable<ProyectoItem> {
+    return this.http.post<ProyectoItem>(this.apiUrl, proyecto);
+  }
+
+  eliminarProyecto(id: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }

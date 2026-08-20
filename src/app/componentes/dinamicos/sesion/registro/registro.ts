@@ -1,20 +1,46 @@
-import { Component, inject } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, inject, signal } from '@angular/core';
+import {
+  FormBuilder,
+  ReactiveFormsModule,
+  Validators,
+  AbstractControl,
+  ValidationErrors,
+} from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { AuthService } from '../../../../servicios/autenticacion';
+
+export function matchPasswords(control: AbstractControl): ValidationErrors | null {
+  const password = control.get('contrasenia');
+  const confirmPassword = control.get('contrasenia2');
+  if (password && confirmPassword && password.value !== confirmPassword.value) {
+    confirmPassword.setErrors({ mismatch: true });
+    return { mismatch: true };
+  }
+  return null;
+}
 
 @Component({
   selector: 'app-registro',
-  imports: [ReactiveFormsModule],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './registro.html',
   styleUrl: './registro.css',
 })
 export class Registro {
   private formBuilder = inject(FormBuilder);
+  private authService = inject(AuthService);
 
-  registroForm = this.formBuilder.group({
-    email: ['', [Validators.required, Validators.email]],
-    contrasenia: ['', [Validators.required, Validators.min(6)]],
-    contrasenia2: ['', [Validators.required, Validators.min(6)]],
-  });
+  mensajeError = signal<string | null>(null);
+  mensajeExito = signal<string | null>(null);
+
+  registroForm = this.formBuilder.group(
+    {
+      email: ['', [Validators.required, Validators.email]],
+      contrasenia: ['', [Validators.required, Validators.minLength(6)]],
+      contrasenia2: ['', [Validators.required]],
+    },
+    { validators: matchPasswords },
+  );
 
   get Email() {
     return this.registroForm.get('email');
@@ -28,13 +54,20 @@ export class Registro {
 
   onSubmit(): void {
     if (this.registroForm.valid) {
-      if (this.Contrasenia?.value == this.Contrasenia2?.value) {
-        console.log('Datos del formulario:', this.registroForm.value);
-      } else {
-        console.log('Las contraseñas no son iguales!');
-      }
+      const { email, contrasenia } = this.registroForm.value;
+
+      this.authService.registrar({ email, contrasenia }).subscribe({
+        next: () => {
+          this.mensajeExito.set('¡Cuenta creada e iniciada con éxito!');
+          this.mensajeError.set(null);
+        },
+        error: (err) => {
+          console.error('Error al registrar', err);
+          this.mensajeError.set('No se pudo registrar el usuario. Intenta de nuevo.');
+        },
+      });
     } else {
-      console.log('eeeh pillin te has equivocao');
+      this.registroForm.markAllAsTouched();
     }
   }
 }

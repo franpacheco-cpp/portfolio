@@ -1,10 +1,19 @@
-import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { AuthService } from '../../../servicios/autenticacion';
 
 @Component({
   selector: 'app-sesion',
-  imports: [RouterOutlet, RouterLink],
+  standalone: true,
+  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './sesion.html',
   styleUrl: './sesion.css',
 })
-export class Sesion {}
+export class Sesion {
+  public authService = inject(AuthService);
+
+  cerrarSesion() {
+    this.authService.cerrarSesion();
+  }
+}

@@ -1,0 +1,53 @@
+@if (autenticacionService.obtenerRol() === 'admin') {
+  <section class="form">
+    <h3>Agregar Nuevo Proyecto</h3>
+    <form [formGroup]="proyectoForm" (ngSubmit)="onSubmit()">
+      <div class="input-group">
+        <input formControlName="nombre" type="text" placeholder="Nombre del Proyecto" />
+        @if (proyectoForm.get('nombre')?.invalid && proyectoForm.get('nombre')?.touched) {
+          <div class="validacion">El nombre es obligatorio (mínimo 3 caracteres)</div>
+        }
+      </div>
+
+      <div class="input-group">
+        <textarea formControlName="descripcion" placeholder="Descripción del Proyecto"></textarea>
+        @if (proyectoForm.get('descripcion')?.invalid && proyectoForm.get('descripcion')?.touched) {
+          <div class="validacion">La descripción es obligatoria</div>
+        }
+      </div>
+
+      <div class="input-group">
+        <input formControlName="img" type="text" placeholder="Imagen (URL)" />
+        @if (proyectoForm.get('img')?.invalid && proyectoForm.get('img')?.touched) {
+          <div class="validacion">La URL de la imagen es obligatoria</div>
+        }
+      </div>
+
+      <div class="input-group">
+        <input formControlName="url" type="text" placeholder="URL" />
+      </div>
+
+      <div class="input-group">
+        <input
+          formControlName="tecnologiasTexto"
+          type="text"
+          placeholder="Tecnologías (separadas por comas)"
+        />
+        @if (
+          proyectoForm.get('tecnologiasTexto')?.invalid &&
+          proyectoForm.get('tecnologiasTexto')?.touched
+        ) {
+          <div class="validacion">Debes ingresar al menos una tecnología</div>
+        }
+      </div>
+
+      @if (mensajeError()) {
+        <p class="error">{{ mensajeError() }}</p>
+      }
+
+      <button type="submit" [disabled]="proyectoForm.invalid || cargando()">
+        {{ cargando() ? 'Guardando...' : 'Guardar Proyecto' }}
+      </button>
+    </form>
+  </section>
+}
