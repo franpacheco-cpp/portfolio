@@ -38,7 +38,7 @@ export class Proyectos implements OnInit {
     });
   }
 
-  eliminar(id: string): void {
+  eliminar(id: number): void {
     this.proyectoService.eliminarProyecto(id).subscribe(() => {
       this.cargarProyectos();
     });

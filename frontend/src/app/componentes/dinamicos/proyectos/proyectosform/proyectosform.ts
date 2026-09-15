@@ -2,7 +2,7 @@ import { Component, inject, output, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../../servicios/autenticacion';
-import { ProyectoService } from '../../../../servicios/proyecto';
+import { ProyectoService, ProyectoItem } from '../../../../servicios/proyecto';
 
 @Component({
   selector: 'app-proyecto-formulario',
@@ -33,23 +33,25 @@ export class ProyectosForm {
     if (this.proyectoForm.valid) {
       this.cargando.set(true);
       const formValues = this.proyectoForm.value;
-      const tecnologiasArray = formValues.tecnologiasTexto!.split(',').map((t, index) => ({
-        id: String(index + 1),
-        nombre: t.trim(),
-      }));
 
-      const nuevoProyecto = {
-        nombre: formValues.nombre,
-        descripcion: formValues.descripcion,
-        img: formValues.img,
-        url: formValues.url,
+      const tecnologiasArray = formValues
+        .tecnologiasTexto!.split(',')
+        .map((t) => ({ nombre: t.trim() }))
+        .filter((t) => t.nombre.length > 0);
+
+      const nuevoProyecto: ProyectoItem = {
+        nombre: formValues.nombre!,
+        descripcion: formValues.descripcion!,
+        img: formValues.img!,
+        url: formValues.url || '',
         tecnologias: tecnologiasArray,
       };
 
-      this.proyectoService.crearProyecto(nuevoProyecto as any).subscribe({
+      this.proyectoService.crearProyecto(nuevoProyecto).subscribe({
         next: () => {
           this.cargando.set(false);
           this.proyectoForm.reset();
+          this.mensajeError.set(null);
           this.proyectoCreado.emit();
         },
         error: (err) => {

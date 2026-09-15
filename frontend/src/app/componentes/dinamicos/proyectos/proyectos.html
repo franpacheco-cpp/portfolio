@@ -25,7 +25,7 @@
           <p>{{ proyecto.descripcion }}</p>
 
           @if (autenticacionService.obtenerRol() === 'admin') {
-            <button (click)="eliminar(proyecto.id)">Eliminar</button>
+            <button (click)="eliminar(proyecto.id!)">Eliminar</button>
           }
         </article>
       }
