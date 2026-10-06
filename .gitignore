@@ -40,6 +40,14 @@ yarn-error.log
 testem.log
 /typings
 __screenshots__/
+.angular/
+dist/
+
+# Python / Django
+__pycache__/
+*.pyc
+db.sqlite3
+.env
 
 # System files
 .DS_Store
